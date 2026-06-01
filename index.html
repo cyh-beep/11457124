@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>富竹賞鳥埤塘 2-18號池 - 生態資料庫</title>
+    <style>
+        /* ==========================================================================
+           1. 基礎設定與變數 (生態與埤塘主題色)
+           ========================================================================== */
+        :root {
+            --primary-green: #2c5e43;  /* 森林深綠 */
+            --accent-blue: #3a86c8;   /* 埤塘水藍 */
+            --light-bg: #f4f7f5;      /* 淺綠調灰色背景 */
+            --dark-text: #2b302c;     /* 深色文字 */
+            --white: #ffffff;
+            --gray-border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ==========================================================================
+           2. 頁首與導覽列 (手機漢堡選單 / 電腦橫向選單)
+           ========================================================================== */
+        .site-header {
+            background: linear-gradient(135deg, var(--primary-green), #1b3d2b);
+            color: var(--white);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .site-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .site-header .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* 導覽列外框 */
+        .main-navigation {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* 手機版導覽列左側品牌名稱 */
+        .nav-brand {
+            font-weight: bold;
+            color: var(--primary-green);
+            font-size: 1.1rem;
+        }
+
+        /* 漢堡按鈕本體 */
+        .hamburger-btn {
+            display: block; /* 手機版顯示 */
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 30px;
+            height: 24px;
+            position: relative;
+            z-index: 101;
+        }
+
+        /* 漢堡按鈕的三條線 */
+        .hamburger-btn span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: var(--primary-green);
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+
+        .hamburger-btn span:nth-child(1) { top: 0px; }
+        .hamburger-btn span:nth-child(2) { top: 10px; }
+        .hamburger-btn span:nth-child(3) { top: 20px; }
+
+        /* 漢堡按鈕點擊後的「X」動態特效 */
+        .hamburger-btn.active span:nth-child(1) {
+            top: 10px;
+            transform: rotate(135deg);
+        }
+        .hamburger-btn.active span:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+        }
+        .hamburger-btn.active span:nth-child(3) {
+            top: 10px;
+            transform: rotate(-135deg);
+        }
+
+        /* 手機版：選單清單改為右側滑出的抽屜 (預設隱藏) */
+        .nav-menu {
+            list-style: none;
+            position: fixed;
+            top: 0;
+            right: -100%; /* 隱藏在螢幕右側外 */
+            width: 280px;
+            height: 100vh;
+            background-color: var(--white);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            padding: 80px 20px 20px 20px; /* 留頂部空間給 X 按鈕 */
+            display: flex;
+            flex-direction: column;
+            transition: right 0.3s ease-in-out;
+            overflow-y: auto; /* 內容過長時可滾動 */
+        }
+
+        /* 當啟用（Active）時，選單滑入螢幕 */
+        .nav-menu.active {
+            right: 0;
+        }
+
+        .nav-menu > li {
+            border-bottom: 1px solid var(--gray-border);
+        }
+
+        .nav-menu > li > a {
+            display: block;
+            padding: 12px 10px;
+            font-weight: bold;
+            color: var(--primary-green);
+        }
+
+        /* 手機版下拉子選單直接鋪平展開 */
+        .dropdown-menu-list {
+            list-style: none;
+            background-color: #fcfdfe;
+            padding-left: 15px;
+            border-left: 2px solid var(--accent-blue);
+            margin-bottom: 10px;
+        }
+
+        .dropdown-menu-list li a {
+            display: block;
+            padding: 8px 10px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* ==========================================================================
+           3. 主要內容區與鳥類卡片 (Grid 網格)
+           ========================================================================== */
+        .database-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            color: var(--primary-green);
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-blue);
+            margin: 8px auto 0;
+        }
+
+        /* 卡片網格：手機版預設 1 欄直向 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        /* 單張卡片樣式 */
+        .bird-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .bird-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 縮圖處理：將大圖自動縮放為完美的卡片縮圖 */
+        .card-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background-color: #e2e8f0;
+        }
+
+        .card-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* 標籤 (留鳥/候鳥) */
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 20px;
+            color: var(--white);
+        }
+        .badge.resident { background-color: var(--primary-green); }
+        .badge.migrant { background-color: var(--accent-blue); }
+
+        /* 卡片文字內容 */
+        .card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        .card-excerpt {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 1; /* 確保按鈕在底部對齊 */
+        }
+
+        /* 行動呼籲按鈕 (CTA) */
+        .cta-button {
+            text-align: center;
+            background-color: var(--accent-blue);
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .cta-button:hover {
+            background-color: #2a6da5;
+        }
+
+        /* ==========================================================================
+           4. 頁尾
+           ========================================================================== */
+        .site-footer {
+            background-color: #1e2220;
+            color: #a0aec0;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.8rem;
+            margin-top: 60px;
+            border-top: 4px solid var(--primary-green);
+        }
+
+        .site-footer p {
+            margin-bottom: 5px;
+        }
+
+        /* ==========================================================================
+           5. RWD 響應式媒體查詢 (電腦版：隱藏漢堡，還原為橫向選單)
+           ========================================================================== */
+        @media screen and (min-width: 768px) {
+            .site-header h1 {
+                font-size: 2.3rem;
+            }
+            
+            /* 電腦版不需要手機 Logo */
+            .nav-brand {
+                display: none;
+            }
+
+            /* 隱藏漢堡按鈕 */
+            .hamburger-btn {
+                display: none;
+            }
+            
+            /* 還原選單為桌上型橫向配置 */
+            .nav-menu {
+                position: static;
+                width: 100%;
+                height: auto;
+                background-color: transparent;
+                box-shadow: none;
+                padding: 0;
+                flex-direction: row;
+                justify-content: center;
+                overflow-y: visible;
+            }
+            
+            .nav-menu > li {
+                border-bottom: none;
+                border-right: 1px solid rgba(0,0,0,0.05);
+                position: relative;
+            }
+            
+            .nav-menu > li:last-child {
+                border-right: none;
+            }
+
+            .nav-menu > li > a {
+                padding: 10px 20px;
+            }
+            
+            /* 電腦版懸浮下拉選單結構 */
+            .dropdown-menu-list {
+                display: none; /* 平時隱藏 */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 180px;
+                background-color: var(--white);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                padding-left: 0;
+                border-left: none;
+                border-radius: 0 0 6px 6px;
+                margin-bottom: 0;
+            }
+            
+            .dropdown-menu-list li {
+                border-bottom: 1px solid var(--gray-border);
+            }
+            
+            .dropdown-menu-list li a {
+                padding: 12px 20px;
+            }
+            
+            /* 電腦版滑過時顯示子選單 */
+            .dropdown:hover .dropdown-menu-list {
+                display: block;
+            }
+            
+            .dropdown-menu-list li a:hover {
+                background-color: var(--light-bg);
+                color: var(--primary-green);
+            }
+
+            /* 卡片網格：電腦版改為 3 欄橫向排列 */
+            .card-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <h1>富竹賞鳥埤塘 2-18號池</h1>
+            <p class="subtitle">桃園大圳第二支線 2k7 數位生態資料庫</p>
+        </div>
+    </header>
+
+    <nav class="main-navigation">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">2-18號池資料庫</a>
+            
+            <button class="hamburger-btn" id="js-hamburger" aria-label="切換選單">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu" id="js-nav-menu">
+                <li><a href="#about">關於</a></li>
+                <li><a href="#map">地圖</a></li>
+                
+                <li class="dropdown">
+                    <a href="#history" class="dropdown-toggle">歷史與文化</a>
+                    <ul class="dropdown-menu-list">
+                        <li><a href="#origin">起源故事</a></li>
+                        <li><a href="#life">周邊生活</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#ecology" class="dropdown-toggle">生態調查</a>
+                    <ul class="dropdown-menu-list">
+                        <li><a href="#plants">植物</a></li>
+                        <li><a href="#fauna-birds">動物與鳥類</a></li>
+                        <li><a href="#animals">動物</a></li>
+                        <li><a href="#birds">鳥類</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#insects-water" class="dropdown-toggle">昆蟲與水質</a>
+                    <ul class="dropdown-menu-list">
+                        <li><a href="#insects">昆蟲</a></li>
+                        <li><a href="#water">水質</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#landscape" class="dropdown-toggle">地景與水利</a>
+                    <ul class="dropdown-menu-list">
+                        <li><a href="#water-system">給水系統</a></li>
+                        <li><a href="#structures">關鍵構造</a></li>
+                        <li><a href="#logic">分水邏輯</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#status" class="dropdown-toggle">變遷與現狀</a>
+                    <ul class="dropdown-menu-list">
+                        <li><a href="#land-changes">土地變化</a></li>
+                        <li><a href="#functions">轉型功能</a></li>
+                        <li><a href="#challenges">面臨挑戰</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="database-container">
+        <section class="section-title">
+            <h2>埤塘常見鳥類</h2>
+            <p>點選下方卡片，深入探索富竹賞鳥埤塘的常駐居民與季節訪客。</p>
+        </section>
+
+        <div class="card-grid">
+            
+            <article class="bird-card">
+                <div class="card-thumbnail">
+                    <img src="placeholder.jpg" alt="小白鷺">
+                    <span class="badge resident">留鳥</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">小白鷺</h3>
+                    <p class="card-excerpt">全身羽毛潔白，嘴與腳為黑色，腳趾為顯眼的黃綠色。常在埤塘淺水區涉水覓食魚蝦。</p>
+                    <a href="#egret-detail" class="cta-button">探索物種檔案</a>
+                </div>
+            </article>
+
+            <article class="bird-card">
+                <div class="card-thumbnail">
+                    <img src="placeholder.jpg" alt="夜鷺">
+                    <span class="badge resident">留鳥</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">夜鷺</h3>
+                    <p class="card-excerpt">俗稱「暗光鳥」，頭頂與背部為黑藍色。黃昏與夜間活動力強，常靜止於岸邊伺機捕魚。</p>
+                    <a href="#night-heron-detail" class="cta-button">探索物種檔案</a>
+                </div>
+            </article>
+
+            <article class="bird-card">
+                <div class="card-thumbnail">
+                    <img src="placeholder.jpg" alt="紅冠水雞">
+                    <span class="badge resident">留鳥</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">紅冠水雞</h3>
+                    <p class="card-excerpt">全身黑褐色，額頭與嘴基部呈鮮紅色。常在埤塘畔的水草叢、挺水植物間穿梭與築巢。</p>
+                    <a href="#moorhen-detail" class="cta-button">探索物種檔案</a>
+                </div>
+            </article>
+
+            <article class="bird-card">
+                <div class="card-thumbnail">
+                    <img src="placeholder.jpg" alt="翠鳥">
+                    <span class="badge resident">留鳥</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">翠鳥</h3>
+                    <p class="card-excerpt">擁有極為艷麗的藍綠色羽毛與橘色腹部。常停駐在延伸至水面的樹枝上，隨時準備衝入水中。</p>
+                    <a href="#kingfisher-detail" class="cta-button">探索物種檔案</a>
+                </div>
+            </article>
+
+            <article class="bird-card">
+                <div class="card-thumbnail">
+                    <img src="placeholder.jpg" alt="小鷿鷈">
+                    <span class="badge migrant">冬候鳥</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">小鷿鷈</h3>
+                    <p class="card-excerpt">體型圓胖的潛水高手，受驚嚇時會迅速潛入水中。秋冬季節常可在開闊的池面上發現其蹤跡。</p>
+                    <a href="#grebe-detail" class="cta-button">探索物種檔案</a>
+                </div>
+            </article>
+
+            <article class="bird-card">
+                <div class="card-thumbnail">
+                    <img src="placeholder.jpg" alt="蒼鷺">
+                    <span class="badge migrant">冬候鳥</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">蒼鷺</h3>
+                    <p class="card-excerpt">台灣體型最大的鷺科鳥類，全身主要為灰色。常孤獨地站立在埤塘深處或岸邊，靜止如雕像。</p>
+                    <a href="#grey-heron-detail" class="cta-button">探索物種檔案</a>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 富竹賞鳥埤塘生態社區資料庫. All Rights Reserved.</p>
+        <p>指導單位：農田水利署桃園管理處 / 蘆竹區富竹里辦公處</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('js-hamburger');
+        const navMenu = document.getElementById('js-nav-menu');
+
+        // 點擊漢堡按鈕時切換啟動狀態（active）
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // 當點擊選單內任何一個超連結，自動收回選單（優化手機體驗）
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
