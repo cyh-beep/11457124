@@ -1,4 +1,16 @@
 /* Place your CSS here. Replace with full stylesheet later */
+body{
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-family: 'Noto Serif TC', serif;
+}
 body{font-family:'Noto Sans TC',sans-serif;margin:0;background:#f5f2eb;color:#1e2c24}
 header,footer{background:#1e2c24;color:#e8f5ec;padding:1rem}
 nav{background:#253029}
