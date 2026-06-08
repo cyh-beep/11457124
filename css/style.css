@@ -1,7 +1,14 @@
 /* Place your CSS here. Replace with full stylesheet later */
+/* 全站預設字型（內文） */
+
 body{
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family:
+    'Noto Sans TC',
+    sans-serif;
 }
+
+
+/* 標題字型 */
 
 h1,
 h2,
@@ -9,9 +16,12 @@ h3,
 h4,
 h5,
 h6{
-    font-family: 'Noto Serif TC', serif;
+    font-family:
+    'Noto Serif TC',
+    serif;
+
+    font-weight:500;
 }
-body{font-family:'Noto Sans TC',sans-serif;margin:0;background:#f5f2eb;color:#1e2c24}
 header,footer{background:#1e2c24;color:#e8f5ec;padding:1rem}
 nav{background:#253029}
 .nav-list{display:flex;flex-wrap:wrap;list-style:none;margin:0;padding:.5rem 1rem}
