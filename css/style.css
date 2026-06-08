@@ -1,6 +1,6 @@
-/* ==========================
-   全站基本設定
-========================== */
+/* =========================
+   基本設定
+========================= */
 
 * {
     margin: 0;
@@ -16,9 +16,9 @@ body {
 }
 
 
-/* ==========================
+/* =========================
    標題字型
-========================== */
+========================= */
 
 h1,
 h2,
@@ -31,44 +31,35 @@ h6 {
 }
 
 
-/* ==========================
+/* =========================
    Header
-========================== */
+========================= */
 
 header {
     background-color: #1f3329;
-    color: #ffffff;
     text-align: center;
     padding: 2rem 1rem;
 }
 
 header h1 {
+    color: #ffffff;
     font-size: 2.8rem;
-    margin-bottom: 0.5rem;
-}
-
-header p {
-    color: #c9d9cf;
-    font-size: 1rem;
 }
 
 
-/* ==========================
+/* =========================
    Navigation
-========================== */
+========================= */
 
 nav {
-    background-color: #2d4639;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background-color: #284535;
 }
 
 .nav-list {
+    list-style: none;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    list-style: none;
 }
 
 .nav-list li {
@@ -77,20 +68,20 @@ nav {
 
 .nav-list a {
     display: block;
-    color: #d9e7dd;
+    color: #e5efe8;
     text-decoration: none;
-    padding: 1rem 1.2rem;
+    padding: 1rem 1.3rem;
     transition: background-color 0.3s ease;
 }
 
 .nav-list a:hover {
-    background-color: #40614f;
+    background-color: #3d5c4b;
 }
 
 
-/* ==========================
+/* =========================
    Main
-========================== */
+========================= */
 
 main {
     max-width: 1200px;
@@ -101,35 +92,29 @@ main {
 main h2 {
     text-align: center;
     margin-bottom: 2rem;
-    font-size: 2rem;
 }
 
 
-/* ==========================
-   卡片區塊
-========================== */
+/* =========================
+   卡片排列
+========================= */
 
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
 }
 
 
-/* ==========================
-   卡片
-========================== */
+/* =========================
+   卡片樣式
+========================= */
 
 .bird-card {
     background-color: #ffffff;
-    border-radius: 18px;
+    border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: transform 0.25s ease;
-}
-
-.bird-card:hover {
-    transform: translateY(-5px);
 }
 
 .card-thumb img {
@@ -145,58 +130,56 @@ main h2 {
 
 .card-body h3 {
     margin-bottom: 1rem;
-    font-size: 1.3rem;
 }
 
 
-/* ==========================
+/* =========================
    按鈕
-========================== */
+========================= */
 
 .card-cta {
     display: inline-block;
-    background-color: #2d4639;
-    color: #ffffff;
+    background-color: #284535;
+    color: white;
     text-decoration: none;
     padding: 0.7rem 1rem;
     border-radius: 999px;
-    transition: background-color 0.3s ease;
 }
 
 .card-cta:hover {
-    background-color: #40614f;
+    background-color: #3d5c4b;
 }
 
 
-/* ==========================
+/* =========================
    Footer
-========================== */
+========================= */
 
 footer {
     background-color: #1f3329;
-    color: #d8e6dc;
+    color: #d9e6dd;
     text-align: center;
     padding: 1.5rem;
     margin-top: 3rem;
 }
 
 
-/* ==========================
-   平板版（2個一排）
-========================== */
+/* =========================
+   平板：2 張
+========================= */
 
 @media screen and (max-width: 1024px) {
 
     .card-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1fr;
     }
 
 }
 
 
-/* ==========================
-   手機版（1個一排）
-========================== */
+/* =========================
+   手機：1 張
+========================= */
 
 @media screen and (max-width: 768px) {
 
@@ -205,16 +188,12 @@ footer {
         align-items: center;
     }
 
-    header h1 {
-        font-size: 2rem;
-    }
-
-    main {
-        padding: 1.5rem 1rem;
-    }
-
     .card-grid {
         grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 2rem;
     }
 
 }
