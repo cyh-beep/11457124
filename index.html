@@ -1,231 +1,280 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>埤塘資料庫</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>埤塘資料庫</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet" />
 <body>
 
-    <header>
-        <div class="logo">
-            <h1>埤塘資料庫</h1>
-            <p>探索埤塘的自然、生態與文化</p>
+<!-- ══════════════════ HEADER ══════════════════ -->
+<header>
+  <div class="site-logo">
+    <span></span>埤塘資料庫
+  </div>
+  <button class="menu-toggle" aria-label="開啟選單" aria-expanded="false" onclick="toggleMenu(this)">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav id="main-nav" role="navigation" aria-label="主要選單">
+  <ul class="nav-list">
+
+    <li class="nav-item"><a href="#">關於</a></li>
+    <li class="nav-item"><a href="#">地圖</a></li>
+
+    <li class="nav-item">
+      <a href="#">歷史與文化 <span class="caret">▾</span></a>
+      <ul class="dropdown">
+        <li><a href="#">起源故事</a></li>
+        <li><a href="#">周邊生活</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a href="#">生態調查 <span class="caret">▾</span></a>
+      <ul class="dropdown">
+        <li><a href="#">植物</a></li>
+        <li class="sub-group">
+          <span>動物與鳥類</span>
+          <ul>
+            <li><a href="#">動物</a></li>
+            <li><a href="#">鳥類</a></li>
+          </ul>
+        </li>
+        <li class="sub-group">
+          <span>昆蟲與水質</span>
+          <ul>
+            <li><a href="#">昆蟲</a></li>
+            <li><a href="#">水質</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a href="#">地景與水利 <span class="caret">▾</span></a>
+      <ul class="dropdown">
+        <li><a href="#">給水系統</a></li>
+        <li><a href="#">關鍵構造</a></li>
+        <li><a href="#">分水邏輯</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a href="#">變遷與現狀 <span class="caret">▾</span></a>
+      <ul class="dropdown">
+        <li><a href="#">土地變化</a></li>
+        <li><a href="#">轉型功能</a></li>
+        <li><a href="#">面臨挑戰</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a href="#">互動任務 <span class="caret">▾</span></a>
+      <ul class="dropdown">
+        <li><a href="#">選擇題</a></li>
+        <li><a href="#">填充題</a></li>
+      </ul>
+    </li>
+
+  </ul>
+</nav>
+
+<!-- ══════════════════ MAIN ══════════════════ -->
+<main>
+
+  <div class="section-header">
+    <p class="eyebrow">生態調查・鳥類</p>
+    <h2>埤塘鳥類圖鑑</h2>
+    <p>桃園埤塘濕地是候鳥與留鳥的重要棲地，記錄了超過百種鳥類的蹤跡。</p>
+  </div>
+
+  <div class="card-grid">
+
+    <!-- Card 1 -->
+    <article class="bird-card">
+      <div class="card-thumb">
+        <!--
+          替換方式：將下方 thumb-placeholder 區塊整個換成：
+          <img src="你的圖片路徑.jpg" alt="小白鷺" />
+        -->
+        <div class="thumb-placeholder">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 12 C24 18 20 30 22 42 L32 44 L42 42 C44 30 40 18 32 12Z" fill="white" opacity="0.8"/>
+            <circle cx="32" cy="10" r="5" fill="white" opacity="0.8"/>
+            <path d="M22 42 L14 52 M42 42 L50 52" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
         </div>
-    </header>
+        <span class="card-tag">留鳥</span>
+      </div>
+      <div class="card-body">
+        <p class="card-latin">Egretta garzetta</p>
+        <h3 class="card-title">小白鷺</h3>
+        <p class="card-desc">全身雪白，腳趾金黃，常見於埤塘淺水區涉水覓食，是桃園農田濕地最具代表性的水鳥之一。</p>
+        <a href="#" class="card-cta">
+          探索詳情
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </article>
 
-    <nav>
-        <ul class="menu">
+    <!-- Card 2 -->
+    <article class="bird-card">
+      <div class="card-thumb">
+        <div class="thumb-placeholder" style="background: linear-gradient(135deg, #b5cce0 0%, #7fa8c4 50%, #5787a8 100%);">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="32" cy="34" rx="14" ry="10" fill="white" opacity="0.7"/>
+            <circle cx="32" cy="20" r="6" fill="white" opacity="0.7"/>
+            <path d="M18 34 L8 38 M46 34 L56 38" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M28 44 L26 54 M36 44 L38 54" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="card-tag">候鳥</span>
+      </div>
+      <div class="card-body">
+        <p class="card-latin">Ardea cinerea</p>
+        <h3 class="card-title">蒼鷺</h3>
+        <p class="card-desc">體型高大，灰藍色羽毛，靜立水邊等待獵物的姿態如雕像，秋冬季節大批降落埤塘休憩。</p>
+        <a href="#" class="card-cta">
+          探索詳情
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </article>
 
-            <li><a href="pages/About.html">關於</a></li>
+    <!-- Card 3 -->
+    <article class="bird-card">
+      <div class="card-thumb">
+        <div class="thumb-placeholder" style="background: linear-gradient(135deg, #d4c5a2 0%, #b09872 50%, #8a7350 100%);">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="32" cy="36" rx="11" ry="8" fill="white" opacity="0.7"/>
+            <circle cx="32" cy="23" r="5" fill="white" opacity="0.7"/>
+            <path d="M32 13 L36 8 L34 14" fill="white" opacity="0.6"/>
+            <path d="M21 36 L10 40 M43 36 L54 40" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="card-tag">留鳥</span>
+      </div>
+      <div class="card-body">
+        <p class="card-latin">Nycticorax nycticorax</p>
+        <h3 class="card-title">夜鷺</h3>
+        <p class="card-desc">黑頭灰背、眼睛鮮紅，黃昏後才開始活動，常在埤塘邊緣樹上群聚棲息，叫聲響亮粗獷。</p>
+        <a href="#" class="card-cta">
+          探索詳情
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </article>
 
-            <li><a href="pages/Map.html">地圖</a></li>
+    <!-- Card 4 -->
+    <article class="bird-card">
+      <div class="card-thumb">
+        <div class="thumb-placeholder" style="background: linear-gradient(135deg, #a8d5b5 0%, #74b890 50%, #4e9e70 100%);">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 16 C20 22 16 36 20 46 L32 50 L44 46 C48 36 44 22 32 16Z" fill="white" opacity="0.7"/>
+            <circle cx="32" cy="13" r="5" fill="white" opacity="0.7"/>
+            <path d="M20 46 L12 56 M44 46 L52 56" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <ellipse cx="32" cy="34" rx="6" ry="4" fill="rgba(0,0,0,0.15)"/>
+          </svg>
+        </div>
+        <span class="card-tag">留鳥</span>
+      </div>
+      <div class="card-body">
+        <p class="card-latin">Bubulcus ibis</p>
+        <h3 class="card-title">黃頭鷺</h3>
+        <p class="card-desc">繁殖期頭頸呈橙黃色，非繁殖期純白，喜愛跟隨農耕機具或牛群，捕食被驚起的昆蟲。</p>
+        <a href="#" class="card-cta">
+          探索詳情
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </article>
 
-            <li class="dropdown">
-                <a href="pages/HistoryCulture.html">
-                    歷史與文化
-                </a>
-                <ul class="submenu">
-                    <li>
-                        <a href="pages/OriginStory.html">
-                            起源故事
-                        </a>
-                    </li>
-                    <li>
-                        <a href="pages/CommunityLife.html">
-                            周邊生活
-                        </a>
-                    </li>
-                </ul>
-            </li>
+    <!-- Card 5 -->
+    <article class="bird-card">
+      <div class="card-thumb">
+        <div class="thumb-placeholder" style="background: linear-gradient(135deg, #e8c9a0 0%, #d4a060 50%, #b87c3a 100%);">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 20 C38 14 48 16 50 24 C52 32 44 38 38 40 L32 42 L26 40 C20 38 12 32 14 24 C16 16 26 14 32 20Z" fill="white" opacity="0.7"/>
+            <circle cx="32" cy="42" r="4" fill="white" opacity="0.7"/>
+            <path d="M28 52 L30 58 M36 52 L34 58" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="card-tag">候鳥</span>
+      </div>
+      <div class="card-body">
+        <p class="card-latin">Dendrocygna javanica</p>
+        <h3 class="card-title">栗樹鴨</h3>
+        <p class="card-desc">體型修長，栗紅色羽毛，叫聲尖銳如哨音，成群在埤塘水面漂浮，是近年數量增加的過境鳥。</p>
+        <a href="#" class="card-cta">
+          探索詳情
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </article>
 
-            <li class="dropdown">
-                <a href="pages/EcologySurvey.html">
-                    生態調查
-                </a>
-                <ul class="submenu">
-                    <li>
-                        <a href="pages/Plants.html">
-                            植物
-                        </a>
-                    </li>
-                    <li>
-                        <a href="pages/Animals.html">
-                            動物
-                        </a>
-                    </li>
-                    <li>
-                        <a href="pages/Birds.html">
-                            鳥類
-                        </a>
-                    </li>
-                </ul>
-            </li>
+    <!-- Card 6 -->
+    <article class="bird-card">
+      <div class="card-thumb">
+        <div class="thumb-placeholder" style="background: linear-gradient(135deg, #c4d9b8 0%, #94be84 50%, #6a9e58 100%);">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="28" r="16" fill="white" opacity="0.65"/>
+            <circle cx="32" cy="28" r="10" fill="rgba(0,0,0,0.08)"/>
+            <path d="M32 44 L28 56 M32 44 L36 56" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M16 28 L4 24 M48 28 L60 24" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="card-tag">留鳥</span>
+      </div>
+      <div class="card-body">
+        <p class="card-latin">Gallinula chloropus</p>
+        <h3 class="card-title">紅冠水雞</h3>
+        <p class="card-desc">額板與嘴基鮮紅如寶石，常在挺水植物間穿梭，擅長游泳與行走浮葉，是埤塘最常見的水鳥。</p>
+        <a href="#" class="card-cta">
+          探索詳情
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </article>
 
-            <li class="dropdown">
-                <a href="pages/InsectsWaterQuality.html">
-                    昆蟲與水質
-                </a>
-                <ul class="submenu">
-                    <li>
-                        <a href="pages/Insects.html">
-                            昆蟲
-                        </a>
-                    </li>
-                    <li>
-                        <a href="pages/WaterQuality.html">
-                            水質
-                        </a>
-                    </li>
-                </ul>
-            </li>
+  </div><!-- /.card-grid -->
+</main>
 
-            <li class="dropdown">
-                <a href="pages/LandscapeHydrology.html">
-                    地景與水利
-                </a>
-                <ul class="submenu">
-                    <li>
-                        <a href="pages/WaterSupplySystem.html">
-                            給水系統
-                        </a>
-                    </li>
-                    <li>
-                        <a href="pages/KeyStructures.html">
-                            關鍵構造
-                        </a>
-                    </li>
-                    <li>
-                        <a href="pages/WaterDivisionLogic.html">
-                            分水邏輯
-                        </a>
-                    </li>
-                </ul>
-            </li>
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+  <nav class="footer-links" aria-label="頁尾連結">
+    <a href="#">關於計畫</a>
+    <a href="#">資料來源</a>
+    <a href="#">聯絡我們</a>
+    <a href="#">版權聲明</a>
+  </nav>
+  <p>© 2025 <strong>埤塘資料庫</strong>・桃園農業生態研究計畫</p>
+</footer>
 
-            <li class="dropdown">
-                <a href="pages/ChangesCurrentStatus.html">
-                    變遷與現狀
-                </a>
-                <ul class="submenu">
-                    <li>
-                        <a href="pages/LandChange.html">
-                            土地變化
-                        </a>
-                    </li>
-                    <li>
-                        <a href="pages/FunctionalTransformation.html">
-                            轉型功能
-                        </a>
-                    </li>
-                    <li>
-                        <a href="pages/Challenges.html">
-                            面臨挑戰
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="dropdown">
-                <a href="pages/InteractiveTasks.html">
-                    互動任務
-                </a>
-                <ul class="submenu">
-                    <li>
-                        <a href="pages/MultipleChoice.html">
-                            選擇題
-                        </a>
-                    </li>
-                    <li>
-                        <a href="pages/FillInBlank.html">
-                            填充題
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-        </ul>
-    </nav>
-
-    <main>
-
-        <section class="card-section">
-
-            <h2>鳥類圖鑑入口</h2>
-
-            <div class="card-grid">
-
-                <article class="card">
-                    <img src="images/birds/bird1.jpg" alt="鳥類">
-                    <div class="card-content">
-                        <h3>小白鷺</h3>
-                        <a href="pages/Birds.html" class="btn">
-                            查看更多
-                        </a>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <img src="images/birds/bird2.jpg" alt="鳥類">
-                    <div class="card-content">
-                        <h3>夜鷺</h3>
-                        <a href="pages/Birds.html" class="btn">
-                            查看更多
-                        </a>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <img src="images/birds/bird3.jpg" alt="鳥類">
-                    <div class="card-content">
-                        <h3>翠鳥</h3>
-                        <a href="pages/Birds.html" class="btn">
-                            查看更多
-                        </a>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <img src="images/birds/bird4.jpg" alt="鳥類">
-                    <div class="card-content">
-                        <h3>紅冠水雞</h3>
-                        <a href="pages/Birds.html" class="btn">
-                            查看更多
-                        </a>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <img src="images/birds/bird5.jpg" alt="鳥類">
-                    <div class="card-content">
-                        <h3>黃頭鷺</h3>
-                        <a href="pages/Birds.html" class="btn">
-                            查看更多
-                        </a>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <img src="images/birds/bird6.jpg" alt="鳥類">
-                    <div class="card-content">
-                        <h3>紅鳩</h3>
-                        <a href="pages/Birds.html" class="btn">
-                            查看更多
-                        </a>
-                    </div>
-                </article>
-
-            </div>
-
-        </section>
-
-    </main>
-
-    <footer>
-        <p>© 2026 埤塘資料庫 Pond Database</p>
-    </footer>
+<script>
+  function toggleMenu(btn) {
+    const nav = document.getElementById('main-nav');
+    const isOpen = nav.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen);
+  }
+</script>
 
 </body>
-</html>
+</html></head>
