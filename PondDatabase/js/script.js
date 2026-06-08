@@ -1,1 +1,0 @@
-function toggleMenu(btn){const nav=document.getElementById('main-nav');const isOpen=nav.classList.toggle('open');btn.classList.toggle('open',isOpen);btn.setAttribute('aria-expanded',isOpen);}
