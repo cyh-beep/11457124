@@ -2,10 +2,10 @@
    RESET
 ========================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 
@@ -13,11 +13,11 @@
    BODY
 ========================= */
 
-body {
-    font-family: 'Noto Sans TC', sans-serif;
-    background-color: #f4f2ec;
-    color: #24352d;
-    line-height: 1.8;
+body{
+    font-family:'Noto Sans TC', sans-serif;
+    background-color:#f4f2ec;
+    color:#24352d;
+    line-height:1.8;
 }
 
 
@@ -25,14 +25,9 @@ body {
    標題字型
 ========================= */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Noto Serif TC', serif;
-    font-weight: 600;
+h1,h2,h3,h4,h5,h6{
+    font-family:'Noto Serif TC', serif;
+    font-weight:600;
 }
 
 
@@ -40,47 +35,43 @@ h6 {
    HEADER
 ========================= */
 
-header {
-    background-color: #1f3329;
-    color: white;
-    text-align: center;
-    padding: 2rem 1rem;
+header{
+    background:#1f3329;
+    color:white;
+    text-align:center;
+    padding:2rem 1rem;
 }
 
-header h1 {
-    font-size: 2.8rem;
+header h1{
+    font-size:2.8rem;
 }
 
 
 /* =========================
-   NAVIGATION
+   NAV
 ========================= */
 
-nav {
-    background-color: #2d4639;
+nav{
+    background:#2d4639;
 }
 
-.nav-list {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    flex-wrap: wrap;
+.nav-list{
+    display:flex;
+    justify-content:center;
+    list-style:none;
+    flex-wrap:wrap;
 }
 
-.nav-list li {
-    list-style: none;
+.nav-list a{
+    display:block;
+    color:#dfe9e2;
+    text-decoration:none;
+    padding:1rem 1.2rem;
+    transition:.3s;
 }
 
-.nav-list a {
-    display: block;
-    color: #dfe9e2;
-    text-decoration: none;
-    padding: 1rem 1.2rem;
-    transition: 0.3s;
-}
-
-.nav-list a:hover {
-    background-color: #40614f;
+.nav-list a:hover{
+    background:#40614f;
 }
 
 
@@ -88,97 +79,10 @@ nav {
    MAIN
 ========================= */
 
-main {
-    max-width: 1100px;
-    margin: auto;
-    padding: 2rem 1rem;
-}
-
-main h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-
-/* =========================
-   卡片區塊（固定三欄）
-========================= */
-
-.card-grid {
-    display: grid;
-
-    /* 固定三個 */
-    grid-template-columns:
-        repeat(3, 300px);
-
-    justify-content: center;
-
-    gap: 30px;
-}
-
-
-/* =========================
-   卡片
-========================= */
-
-.bird-card {
-    width: 300px;
-
-    background: white;
-
-    border-radius: 18px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 4px 15px rgba(0,0,0,0.08);
-
-    transition: 0.3s;
-}
-
-.bird-card:hover {
-    transform: translateY(-6px);
-}
-
-.card-thumb img {
-    width: 100%;
-
-    height: 220px;
-
-    object-fit: cover;
-
-    display: block;
-}
-
-.card-body {
-    padding: 1.2rem;
-}
-
-.card-body h3 {
-    margin-bottom: 1rem;
-}
-
-
-/* =========================
-   按鈕
-========================= */
-
-.card-cta {
-    display: inline-block;
-
-    background-color: #2d4639;
-
-    color: white;
-
-    text-decoration: none;
-
-    padding: 0.7rem 1rem;
-
-    border-radius: 999px;
-}
-
-.card-cta:hover {
-    background-color: #40614f;
+main{
+    max-width:1100px;
+    margin:auto;
+    padding:2rem 1rem;
 }
 
 
@@ -186,139 +90,28 @@ main h2 {
    FOOTER
 ========================= */
 
-footer {
-    background-color: #1f3329;
-    color: #dce7df;
-    text-align: center;
-    padding: 1.5rem;
-    margin-top: 3rem;
+footer{
+    background:#1f3329;
+    color:#dce7df;
+    text-align:center;
+    padding:1.5rem;
+    margin-top:3rem;
 }
 
 
 /* =========================
-   平板（兩欄）
+   手機版
 ========================= */
 
-@media screen and (max-width: 1024px) {
+@media(max-width:768px){
 
-    .card-grid {
-        grid-template-columns:
-            repeat(2, 300px);
+    .nav-list{
+        flex-direction:column;
+        align-items:center;
     }
 
-}
-
-
-/* =========================
-   手機（一欄）
-========================= */
-
-@media screen and (max-width: 768px) {
-
-    .nav-list {
-        flex-direction: column;
-        align-items: center;
+    header h1{
+        font-size:2rem;
     }
 
-    .card-grid {
-        grid-template-columns:
-            300px;
-    }
-
-    header h1 {
-        font-size: 2rem;
-    }
-/* =======================
-   首頁輪播圖
-======================= */
-
-.hero-slider{
-    position: relative;
-    width: 100%;
-    height: 75vh;
-    overflow: hidden;
-}
-
-.slides{
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.slide{
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    pointer-events: none;
-}
-
-.slide.active{
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.slide img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: brightness(65%);
-}
-
-.hero-text{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 20;
-    text-align: center;
-    color: white;
-}
-
-.hero-text h2{
-    font-family: 'Noto Serif TC', serif;
-    font-size: 4rem;
-}
-
-.hero-text p{
-    font-family: 'Noto Sans TC', sans-serif;
-}
-
-.prev,
-.next{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 30;
-    border: none;
-    cursor: pointer;
-    font-size: 2rem;
-    padding: 12px 18px;
-    background: rgba(255,255,255,.2);
-    color: white;
-}
-
-.prev{ left:20px; }
-.next{ right:20px; }
-
-.dots{
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
-    z-index: 30;
-}
-
-.dot{
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 0 6px;
-    background: rgba(255,255,255,.4);
-}
-
-.dot.active{
-    background: white;
 }
