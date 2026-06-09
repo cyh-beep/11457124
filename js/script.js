@@ -1,19 +1,13 @@
-/* ======================
-   漢堡選單
-====================== */
+<script>
+        const hamburger = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
 
-function toggleMenu(btn){
-
-    const nav = document.getElementById('main-nav');
-
-    if(!nav) return;
-
-    const isOpen = nav.classList.toggle('open');
-
-    btn.classList.toggle('open', isOpen);
-    btn.setAttribute('aria-expanded', isOpen);
-}
-
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
 
 /* ======================
    首頁輪播圖
