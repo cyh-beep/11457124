@@ -1,12 +1,187 @@
 <!DOCTYPE html>
-<html lang="zh-TW"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Map｜埤塘資料庫</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/style.css"></head>
-<body><header><h1>埤塘資料庫</h1></header>
-<nav><ul class="nav-list"><li><a href="../index.html">首頁</a></li></ul></nav>
-<main><h2>Map</h2><p>內容待補充。</p></main>
-<footer>© 2026 埤塘資料庫</footer>
-<script src="../js/script.js"></script></body></html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Map｜富竹賞鳥埤塘資料庫</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* ===== 頁面 ===== */
+        .map-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        /* 頁面標題 */
+        .page-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2.6rem;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        /* 區塊 */
+        .map-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 90px;
+        }
+
+        /* 第二區塊左右反轉 */
+        .reverse {
+            direction: rtl;
+        }
+
+        .reverse .text-box {
+            direction: ltr;
+        }
+
+        /* 圖片區 */
+        .image-box {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .4s ease;
+        }
+
+        .image-box:hover img {
+            transform: scale(1.03);
+        }
+
+        /* 文字區 */
+        .text-box h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2rem;
+            margin-bottom: 22px;
+            color: #1f1f1f;
+            font-weight: 500;
+        }
+
+        .text-box p {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 1rem;
+            line-height: 2;
+            color: #555;
+            text-align: justify;
+        }
+
+        /* 分隔線 */
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: #ccc;
+            margin: 80px auto;
+        }
+
+        /* 手機版 */
+        @media (max-width: 768px) {
+
+            .map-section,
+            .reverse {
+                grid-template-columns: 1fr;
+                direction: ltr;
+                gap: 30px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .text-box h3 {
+                font-size: 1.6rem;
+            }
+
+            .map-page {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>埤塘資料庫</h1>
+</header>
+
+<nav>
+    <ul class="nav-list">
+        <li><a href="../index.html">首頁</a></li>
+    </ul>
+</nav>
+
+<main class="map-page">
+
+    <h2 class="page-title">Map</h2>
+
+    <!-- 第一張 -->
+    <section class="map-section">
+
+        <div class="image-box">
+            <img src="../images/map-location.png" alt="富竹賞鳥埤塘位置圖">
+        </div>
+
+        <div class="text-box">
+            <h3>富竹賞鳥埤塘位置圖</h3>
+
+            <p>
+                富竹賞鳥埤塘位於桃園市蘆竹區富竹里，鄰近富竹街與地方聚落，
+                周邊以農地、水圳及道路系統為主。從地圖中可清楚辨識埤塘的位置與交通關係，
+                顯示其與地方生活空間之間的連結，也反映埤塘在區域水文與土地利用上的重要性。
+            </p>
+        </div>
+
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 第二張 -->
+    <section class="map-section reverse">
+
+        <div class="image-box">
+            <img src="../images/map-satellite.png" alt="富竹賞鳥埤塘衛星圖">
+        </div>
+
+        <div class="text-box">
+            <h3>富竹賞鳥埤塘空間環境</h3>
+
+            <p>
+                從衛星影像可觀察富竹賞鳥埤塘與周圍農田、植被及聚落的空間關係。
+                埤塘水域與濕地植生形成多樣化的棲地環境，不僅具有灌溉與蓄水功能，
+                也提供鳥類停棲與覓食空間，使其兼具生態保育與地方景觀價值。
+            </p>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    © 2026 富竹賞鳥埤塘資料庫
+</footer>
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>
