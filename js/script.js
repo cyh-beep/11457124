@@ -27,19 +27,28 @@ const prevBtn = document.querySelector(".prev");
 let current = 0;
 
 
-/* 顯示圖片 */
+/* 顯示指定圖片 */
 function showSlide(index){
 
-    slides.forEach(slide =>
-        slide.classList.remove("active")
-    );
+    if(slides.length === 0) return;
 
-    dots.forEach(dot =>
-        dot.classList.remove("active")
-    );
+    slides.forEach(slide => {
+        slide.classList.remove("active");
+    });
 
-    slides[index].classList.add("active");
-    dots[index].classList.add("active");
+    dots.forEach(dot => {
+        dot.classList.remove("active");
+    });
+
+    // 圖片切換
+    if(slides[index]){
+        slides[index].classList.add("active");
+    }
+
+    // 圓點切換（有才做）
+    if(dots[index]){
+        dots[index].classList.add("active");
+    }
 }
 
 
@@ -69,7 +78,7 @@ function prevSlide(){
 }
 
 
-/* 按鈕 */
+/* 左右按鈕 */
 if(nextBtn){
     nextBtn.addEventListener("click", nextSlide);
 }
@@ -79,12 +88,10 @@ if(prevBtn){
 }
 
 
-/* 自動播放 */
+/* 自動輪播 */
 if(slides.length > 0){
 
     showSlide(current);
 
-    setInterval(() => {
-        nextSlide();
-    }, 4000);
+    setInterval(nextSlide, 4000);
 }
