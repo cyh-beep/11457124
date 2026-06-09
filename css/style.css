@@ -115,3 +115,19 @@ footer{
     }
 
 }
+<nav class="navbar">
+    <div class="logo">MyWebsite</div>
+    
+    <button class="hamburger" id="hamburger-btn">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <ul class="nav-links" id="nav-menu">
+        <li><a href="#">首頁</a></li>
+        <li><a href="#">關於我們</a></li>
+        <li><a href="#">服務項目</a></li>
+        <li><a href="#">聯絡我們</a></li>
+    </ul>
+</nav>
