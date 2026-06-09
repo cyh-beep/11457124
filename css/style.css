@@ -228,5 +228,120 @@ footer {
     header h1 {
         font-size: 2rem;
     }
+   /* ===== 首頁輪播 ===== */
+
+.hero-slider{
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+}
+
+.slides{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.slide.active{
+    opacity: 1;
+}
+
+.slide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(65%);
+}
+
+/* 中間文字 */
+.hero-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 10;
+}
+
+.hero-text h2{
+    font-family: 'Noto Serif TC', serif;
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.hero-text p{
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 1.2rem;
+}
+
+/* 左右按鈕 */
+.prev,
+.next{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 12px 18px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.prev{
+    left: 20px;
+}
+
+.next{
+    right: 20px;
+}
+
+/* 圓點 */
+.dots{
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    text-align: center;
+}
+
+.dot{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 6px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+}
+
+.dot.active{
+    background: white;
+}
+
+/* 手機版 */
+@media(max-width:768px){
+
+    .hero-slider{
+        height: 50vh;
+    }
+
+    .hero-text h2{
+        font-size: 2.3rem;
+    }
+
+    .hero-text p{
+        font-size: 1rem;
+    }
+}
 
 }
