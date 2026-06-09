@@ -1,0 +1,58 @@
+.card-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(3,300px);
+
+    justify-content:center;
+    gap:30px;
+}
+
+.bird-card{
+    width:300px;
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.08);
+
+    transition:.3s;
+}
+
+.bird-card:hover{
+    transform:translateY(-6px);
+}
+
+.card-thumb img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card-body{
+    padding:1.2rem;
+}
+
+.card-cta{
+    display:inline-block;
+    background:#2d4639;
+    color:white;
+    text-decoration:none;
+    padding:.7rem 1rem;
+    border-radius:999px;
+}
+
+@media(max-width:1024px){
+
+    .card-grid{
+        grid-template-columns:
+            repeat(2,300px);
+    }
+}
+
+@media(max-width:768px){
+
+    .card-grid{
+        grid-template-columns:
+            300px;
+    }
+}
