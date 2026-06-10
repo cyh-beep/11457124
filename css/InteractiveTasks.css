@@ -1,19 +1,4 @@
 /* --- 基礎樣式 --- */
-body {
-    font-family: "Microsoft JhengHei", sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
-    line-height: 1.6;
-    padding: 20px;
-}
-.container {
-    max-width: 650px;
-    margin: 0 auto;
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
 h1 {
     text-align: center;
     color: #2c5e43;
