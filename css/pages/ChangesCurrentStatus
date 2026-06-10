@@ -1,0 +1,218 @@
+/* 1. 引入 Google 字型（思源黑體 & 思源宋體） */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap');
+
+/* 全域樣式與變數設定 */
+:root {
+    --primary-color: #3a7d44;     /* 生態綠主調 */
+    --primary-dark: #254e2a;      /* 深綠色 */
+    --bg-color: #f7f9f6;          /* 淺米綠背景 */
+    --card-bg: #ffffff;           /* 卡片白色背景 */
+    --text-main: #2b3a30;         /* 內文深色 */
+    --text-muted: #617366;        /* 次要文字灰色 */
+    --accent-color: #e9af43;      /* 點綴金黃色 */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* 2. 全域預設字型改為 Noto Sans TC（思源黑體） */
+    font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.8;
+}
+
+/* 導覽列 */
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 2px;
+}
+
+/* 主內文區塊 */
+.container {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* 標題區塊 */
+.page-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.page-subtitle {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.page-title {
+    /* 3. 標題指定為 Noto Serif TC（思源宋體） */
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: #1c2d20;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.page-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* 4. 圖片容器與大小限制 */
+.image-wrapper {
+    max-width: 650px;            /* 限制圖片最大寬度，避免在大螢幕上過大 */
+    margin: 0 auto 35px auto;    /* margin 置中對齊，並保有下方間距 */
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    background-color: #e2e8f0;
+}
+
+.main-image {
+    width: 100%;
+    height: auto;                /* 等比例縮放，確保空拍地形不變形 */
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.main-image:hover {
+    transform: scale(1.02);      /* 稍微調高放大懸停效果 */
+}
+
+.image-caption {
+    background-color: #ffffff;
+    padding: 12px 20px;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    border-top: 1px solid #edf2f7;
+    text-align: center;
+}
+
+/* 文章內文區塊 */
+.content-text {
+    font-size: 1.15rem;
+    color: #2d3748;
+    text-align: justify;
+    letter-spacing: 0.5px;
+    margin-bottom: 40px;
+    text-indent: 2.3em;
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.015);
+}
+
+/* 亮點區塊 */
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+@media(min-width: 650px) {
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.feature-card {
+    background: var(--card-bg);
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    border-top: 4px solid var(--primary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.feature-card h3 {
+    font-family: "Noto Serif TC", serif; /* 卡片小標題也同步使用細緻的宋體 */
+    font-size: 1.15rem;
+    color: #1c2d20;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.feature-card p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* 頁尾樣式 */
+footer {
+    text-align: center;
+    padding: 35px 20px;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    border-top: 1px solid #e2e8f0;
+    background-color: #ffffff;
+    margin-top: 60px;
+}
