@@ -1,265 +1,81 @@
-/* =========================
-
-   RESET
-
-========================= */
-
-
-
 *{
-
     margin:0;
-
     padding:0;
-
     box-sizing:border-box;
-
 }
-
-
-
-
-
-/* =========================
-
-   BODY
-
-========================= */
-
-
 
 body{
-
     font-family:'Noto Sans TC', sans-serif;
-
     background-color:#f4f2ec;
-
     color:#24352d;
-
     line-height:1.8;
-
 }
-
-
-
-
-
-/* =========================
-
-   標題字型
-
-========================= */
-
-
 
 h1,h2,h3,h4,h5,h6{
-
     font-family:'Noto Serif TC', serif;
-
     font-weight:600;
-
 }
-
-
-
-
-
-/* =========================
-
-   HEADER
-
-========================= */
-
-
 
 header{
-
     background:#1f3329;
-
     color:white;
-
     text-align:center;
-
     padding:2rem 1rem;
-
 }
-
-
-
 header h1{
-
     font-size:2.8rem;
-
 }
-
-
-
-
-
-/* =========================
-
-   NAV
-
-========================= */
-
-
-
 nav{
-
     background:#2d4639;
-
 }
-
-
-
 .nav-list{
-
     display:flex;
-
     justify-content:center;
-
     list-style:none;
-
     flex-wrap:wrap;
-
 }
-
-
-
 .nav-list a{
-
     display:block;
-
     color:#dfe9e2;
-
     text-decoration:none;
-
     padding:1rem 1.2rem;
-
     transition:.3s;
-
 }
-
-
-
 .nav-list a:hover{
-
     background:#40614f;
-
 }
-
-
-
-
-
-/* =========================
-
-   MAIN
-
-========================= */
-
-
-
 main{
-
     max-width:1100px;
-
     margin:auto;
-
     padding:2rem 1rem;
-
 }
-
-
-
-
-
-/* =========================
-
-   FOOTER
-
-========================= */
-
-
-
 footer{
-
     background:#1f3329;
-
     color:#dce7df;
-
     text-align:center;
-
     padding:1.5rem;
-
     margin-top:3rem;
-
 }
-
-
-
-
-
-/* =========================
-
-   手機版
-
-========================= */
-
-
-
 @media(max-width:768px){
-
-
-
     .nav-list{
-
         flex-direction:column;
-
         align-items:center;
-
     }
-
-
-
     header h1{
-
         font-size:2rem;
-
     }
-
-
-
 }
-
 <nav class="navbar">
-
     <div class="logo">MyWebsite</div>
-
-    
-
     <button class="hamburger" id="hamburger-btn">
-
         <span class="bar"></span>
-
         <span class="bar"></span>
-
         <span class="bar"></span>
-
     </button>
-
-
-
     <ul class="nav-links" id="nav-menu">
-
         <li><a href="#">首頁</a></li>
-
         <li><a href="#">關於我們</a></li>
-
         <li><a href="#">服務項目</a></li>
-
         <li><a href="#">聯絡我們</a></li>
-
     </ul>
-
 </nav>
