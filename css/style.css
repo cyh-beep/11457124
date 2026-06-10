@@ -1,133 +1,161 @@
 /* =========================
-   RESET
+   RESET & BODY
 ========================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-
-/* =========================
-   BODY
-========================= */
-
-body{
-    font-family:'Noto Sans TC', sans-serif;
-    background-color:#f4f2ec;
-    color:#24352d;
-    line-height:1.8;
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: #f4f2ec;
+    color: #24352d;
+    line-height: 1.8;
 }
 
-
-/* =========================
-   標題字型
-========================= */
-
-h1,h2,h3,h4,h5,h6{
-    font-family:'Noto Serif TC', serif;
-    font-weight:600;
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 600;
 }
-
 
 /* =========================
    HEADER
 ========================= */
-
-header{
-    background:#1f3329;
-    color:white;
-    text-align:center;
-    padding:2rem 1rem;
+header {
+    background: #1f3329;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
 }
 
-header h1{
-    font-size:2.8rem;
+header h1 {
+    font-size: 2.8rem;
 }
-
 
 /* =========================
-   NAV
+   NAVBAR (融合優化版)
 ========================= */
-
-nav{
-    background:#2d4639;
+nav.navbar {
+    background: #2d4639;
+    display: flex;
+    justify-content: space-between; /* 讓 Logo 在左、選單/漢堡在右 */
+    align-items: center;
+    padding: 0 1.5rem;
+    position: relative; /* 給手機版絕對定位鋪路 */
 }
 
-.nav-list{
-    display:flex;
-    justify-content:center;
-    list-style:none;
-    flex-wrap:wrap;
+.logo {
+    color: white;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
-.nav-list a{
-    display:block;
-    color:#dfe9e2;
-    text-decoration:none;
-    padding:1rem 1.2rem;
-    transition:.3s;
+/* 將原本的 .nav-list 修改為 .nav-links，對齊 HTML */
+.nav-links {
+    display: flex;
+    list-style: none;
 }
 
-.nav-list a:hover{
-    background:#40614f;
+.nav-links a {
+    display: block;
+    color: #dfe9e2;
+    text-decoration: none;
+    padding: 1rem 1.2rem;
+    transition: .3s;
 }
 
+.nav-links a:hover {
+    background: #40614f;
+}
+
+/* --- 漢堡按鈕樣式（電腦版隱藏） --- */
+.hamburger {
+    display: none; /* 電腦版不顯示 */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #dfe9e2;
+    transition: all 0.3s ease;
+}
 
 /* =========================
-   MAIN
+   MAIN & FOOTER
 ========================= */
-
-main{
-    max-width:1100px;
-    margin:auto;
-    padding:2rem 1rem;
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 2rem 1rem;
 }
 
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    background:#1f3329;
-    color:#dce7df;
-    text-align:center;
-    padding:1.5rem;
-    margin-top:3rem;
+footer {
+    background: #1f3329;
+    color: #dce7df;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
 }
 
-
 /* =========================
-   手機版
+   RWD 手機版 (max-width: 768px)
 ========================= */
-
-@media(max-width:768px){
-
-    .nav-list{
-        flex-direction:column;
-        align-items:center;
+@media(max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
     }
 
-    header h1{
-        font-size:2rem;
+    /* 顯示漢堡按鈕 */
+    .hamburger {
+        display: flex;
     }
 
-}
-<nav class="navbar">
-    <div class="logo">MyWebsite</div>
-    
-    <button class="hamburger" id="hamburger-btn">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-    </button>
+    /* 手機版選單重塑：預設隱藏並下拉 */
+    .nav-links {
+        display: none; /* 預設隱藏選單 */
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        top: 100%; /* 剛好在導覽列下方彈出 */
+        left: 0;
+        background: #2d4639;
+        z-index: 999;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
 
-    <ul class="nav-links" id="nav-menu">
-        <li><a href="#">首頁</a></li>
-        <li><a href="#">關於我們</a></li>
-        <li><a href="#">服務項目</a></li>
-        <li><a href="#">聯絡我們</a></li>
-    </ul>
-</nav>
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        padding: 1.2rem;
+    }
+
+    /* 當 JS 動態加上 .active 時，顯示選單 */
+    .nav-links.active {
+        display: flex;
+    }
+
+    /* 漢堡按鈕轉動變為 X 特效 */
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(7.5px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-7.5px) rotate(-45deg);
+    }
+}
