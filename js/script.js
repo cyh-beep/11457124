@@ -1,12 +1,12 @@
 <script>
-        const hamburger = document.getElementById('hamburger-btn');
-        const navMenu = document.getElementById('nav-menu');
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const navMenu = document.getElementById('nav-menu');
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-    </script>
+    hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+</script>
 </body>
 
 /* ======================
