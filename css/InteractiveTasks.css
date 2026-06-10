@@ -1,99 +1,234 @@
-/* --- 基礎樣式 --- */
-h1 {
-    text-align: center;
-    color: #2c5e43;
-    margin-bottom: 30px;
-}
-.question-block {
-    background-color: #fafafa;
-    border-left: 5px solid #4caf50;
-    padding: 15px 20px;
-    margin-bottom: 25px;
-    border-radius: 0 8px 8px 0;
-}
-.question-title {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 12px;
+/* ======================
+   互動任務頁面
+====================== */
+
+.quiz-section{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 24px;
 }
 
-/* --- 選擇與輸入框 --- */
-.options {
+
+/* ======================
+   頁面標題
+====================== */
+
+.quiz-header{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.quiz-header h2{
+    font-family: 'Noto Serif TC', serif;
+    font-size: 2.8rem;
+    color: #24352d;
+    margin-bottom: 10px;
+}
+
+.quiz-subtitle{
+    font-family: 'Noto Sans TC', sans-serif;
+    color: #666;
+}
+
+
+/* ======================
+   題目卡片
+====================== */
+
+.question-block{
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 30px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.08);
+
+    border-left: 8px solid #2d4639;
+}
+
+.question-title{
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.35rem;
+    color: #24352d;
+    margin-bottom: 20px;
+}
+
+
+/* ======================
+   選項
+====================== */
+
+.options{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
-.options label {
+
+.options label{
+    background-color: #f5f3ee;
+    border-radius: 12px;
+    padding: 12px 16px;
     cursor: pointer;
-    padding: 6px 10px;
-    border-radius: 4px;
-    transition: background 0.2s;
+    transition: 0.3s ease;
 }
-.options label:hover {
-    background-color: #eaeaea;
+
+.options label:hover{
+    background-color: #e6ece8;
 }
-.input-fill {
+
+
+/* ======================
+   填充題輸入框
+====================== */
+
+.input-fill{
     width: 100%;
-    padding: 10px;
+    padding: 14px;
+
     font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+
+    border: 1px solid #d0d0d0;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    transition: border-color 0.3s ease;
 }
 
-/* --- 按鈕 --- */
-.btn-check {
-    background-color: #2c5e43;
+.input-fill:focus{
+    border-color: #2d4639;
+}
+
+
+/* ======================
+   檢查答案按鈕
+====================== */
+
+.btn-check{
+    display: inline-block;
+
+    margin-top: 16px;
+
+    background-color: #2d4639;
+
     color: white;
+
     border: none;
-    padding: 8px 15px;
-    font-size: 0.9rem;
-    border-radius: 4px;
+
+    padding: 12px 20px;
+
+    border-radius: 999px;
+
     cursor: pointer;
-    margin-top: 12px;
-    transition: background 0.3s;
-}
-.btn-check:hover {
-    background-color: #1e422e;
+
+    font-size: 0.95rem;
+
+    transition: 0.3s ease;
 }
 
-/* --- 提示回饋 --- */
-.feedback {
-    margin-top: 12px;
+.btn-check:hover{
+    background-color: #40614f;
+}
+
+
+/* ======================
+   回饋提示
+====================== */
+
+.feedback{
+    margin-top: 16px;
     font-weight: bold;
-    font-size: 1.05rem;
+    font-size: 1rem;
+
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
 }
-.correct {
+
+.correct{
     color: #2e7d32;
 }
-.wrong {
+
+.wrong{
     color: #c62828;
 }
 
-/* --- 錯誤引導按鈕 --- */
-.nav-section {
+
+/* ======================
+   引導按鈕區
+====================== */
+
+.nav-section{
     margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px dashed #ccc;
+    padding-top: 20px;
+
+    border-top:
+        1px dashed #c9d2cb;
+
     display: flex;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
 }
-.btn-nav {
+
+.btn-nav{
     flex: 1;
-    min-width: 150px;
+    min-width: 180px;
+
     text-align: center;
     text-decoration: none;
-    background-color: #4a7c59;
+
+    background-color: #2d4639;
     color: white;
-    padding: 12px;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: background 0.3s;
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    font-weight: 500;
+
+    transition: 0.3s ease;
 }
-.btn-nav:hover {
-    background-color: #355a40;
+
+.btn-nav:hover{
+    background-color: #40614f;
+}
+
+
+/* ======================
+   平板版
+====================== */
+
+@media screen and (max-width: 1024px){
+
+    .quiz-section{
+        padding: 60px 24px;
+    }
+
+}
+
+
+/* ======================
+   手機版
+====================== */
+
+@media screen and (max-width: 768px){
+
+    .quiz-section{
+        padding: 50px 20px;
+    }
+
+    .quiz-header h2{
+        font-size: 2rem;
+    }
+
+    .question-title{
+        font-size: 1.15rem;
+    }
+
+    .btn-nav{
+        min-width: 100%;
+    }
+
 }
