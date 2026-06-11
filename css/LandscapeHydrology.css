@@ -1,0 +1,110 @@
+/* ======================
+   地景與水利
+====================== */
+
+.landscape-water-section{
+    max-width:1200px;
+    margin:60px auto;
+    padding:0 30px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    font-size:2.2rem;
+    color:#2f5e3b;
+    margin-bottom:20px;
+}
+
+.section-title p{
+    max-width:900px;
+    margin:auto;
+    line-height:1.9;
+    color:#444;
+}
+
+
+/* 圖片卡片 */
+.landscape-card-container{
+    display:flex;
+    gap:30px;
+    margin-bottom:50px;
+}
+
+.landscape-card{
+    flex:1;
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 4px 20px rgba(0,0,0,.12);
+    transition:.3s;
+}
+
+.landscape-card:hover{
+    transform:translateY(-5px);
+}
+
+.landscape-card img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:24px;
+}
+
+.card-content h3{
+    color:#2f5e3b;
+    margin-bottom:15px;
+    font-size:1.5rem;
+}
+
+.card-content p{
+    line-height:1.8;
+    color:#555;
+}
+
+
+/* 水利說明 */
+.water-system-box{
+    background:#eef6ee;
+    border-left:6px solid #5f8d4e;
+    padding:30px;
+    border-radius:16px;
+}
+
+.water-system-box h3{
+    color:#2f5e3b;
+    margin-bottom:20px;
+}
+
+.water-system-box p{
+    line-height:1.9;
+    color:#444;
+    margin-bottom:15px;
+}
+
+
+/* 手機版 */
+@media(max-width:768px){
+
+    .landscape-card-container{
+        flex-direction:column;
+    }
+
+    .landscape-water-section{
+        padding:0 20px;
+    }
+
+    .section-title h2{
+        font-size:1.8rem;
+    }
+
+    .landscape-card img{
+        height:240px;
+    }
+}
