@@ -2,28 +2,39 @@
     position:relative;
     width:100%;
     height:75vh;
+    min-height:400px;
     overflow:hidden;
 }
+
 .slides{
     width:100%;
     height:100%;
     position:relative;
 }
+
 .slide{
     position:absolute;
     inset:0;
     opacity:0;
+    visibility:hidden;
+    z-index:1;
     transition:opacity 1s ease;
 }
+
 .slide.active{
     opacity:1;
+    visibility:visible;
+    z-index:2;
 }
+
 .slide img{
     width:100%;
     height:100%;
+    display:block;
     object-fit:cover;
     filter:brightness(65%);
 }
+
 /* 中央文字 */
 .hero-text{
     position:absolute;
@@ -34,12 +45,15 @@
     color:white;
     z-index:20;
 }
+
 .hero-text h2{
     font-size:4rem;
 }
+
 .hero-text p{
     font-size:1.2rem;
 }
+
 /* 左右按鈕 */
 .prev,
 .next{
@@ -54,12 +68,15 @@
     padding:12px 18px;
     z-index:30;
 }
+
 .prev{
     left:20px;
 }
+
 .next{
     right:20px;
 }
+
 /* 圓點 */
 .dots{
     position:absolute;
@@ -68,6 +85,7 @@
     text-align:center;
     z-index:30;
 }
+
 .dot{
     width:12px;
     height:12px;
@@ -75,16 +93,26 @@
     display:inline-block;
     margin:0 5px;
     background:rgba(255,255,255,.5);
+    cursor:pointer;
 }
+
 .dot.active{
     background:white;
 }
+
 /* 手機版 */
 @media(max-width:768px){
     .hero-slider{
         height:50vh;
     }
+
     .hero-text h2{
         font-size:2.3rem;
+    }
+
+    .prev,
+    .next{
+        font-size:1.5rem;
+        padding:8px 12px;
     }
 }
