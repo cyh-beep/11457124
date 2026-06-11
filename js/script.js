@@ -1,13 +1,17 @@
-<script>
-    const hamburgerBtn = document.getElementById('hamburger-btn');
-    const navMenu = document.getElementById('nav-menu');
+/* ======================
+   漢堡選單
+====================== */
 
-    hamburgerBtn.addEventListener('click', () => {
-        hamburgerBtn.classList.toggle('active');
-        navMenu.classList.toggle('active');
+const hamburgerBtn = document.getElementById("hamburger-btn");
+const navMenu = document.getElementById("nav-menu");
+
+if (hamburgerBtn && navMenu) {
+    hamburgerBtn.addEventListener("click", () => {
+        hamburgerBtn.classList.toggle("active");
+        navMenu.classList.toggle("active");
     });
-</script>
-</body>
+}
+
 
 /* ======================
    首頁輪播圖
@@ -22,10 +26,11 @@ let current = 0;
 
 
 /* 顯示指定圖片 */
-function showSlide(index){
+function showSlide(index) {
 
-    if(slides.length === 0) return;
+    if (slides.length === 0) return;
 
+    // 移除全部 active
     slides.forEach(slide => {
         slide.classList.remove("active");
     });
@@ -34,24 +39,24 @@ function showSlide(index){
         dot.classList.remove("active");
     });
 
-    // 圖片切換
-    if(slides[index]){
+    // 加到目前圖片
+    if (slides[index]) {
         slides[index].classList.add("active");
     }
 
-    // 圓點切換（有才做）
-    if(dots[index]){
+    // 加到目前圓點
+    if (dots[index]) {
         dots[index].classList.add("active");
     }
 }
 
 
 /* 下一張 */
-function nextSlide(){
+function nextSlide() {
 
     current++;
 
-    if(current >= slides.length){
+    if (current >= slides.length) {
         current = 0;
     }
 
@@ -60,11 +65,11 @@ function nextSlide(){
 
 
 /* 上一張 */
-function prevSlide(){
+function prevSlide() {
 
     current--;
 
-    if(current < 0){
+    if (current < 0) {
         current = slides.length - 1;
     }
 
@@ -73,90 +78,158 @@ function prevSlide(){
 
 
 /* 左右按鈕 */
-if(nextBtn){
+if (nextBtn) {
     nextBtn.addEventListener("click", nextSlide);
 }
 
-if(prevBtn){
+if (prevBtn) {
     prevBtn.addEventListener("click", prevSlide);
 }
 
 
-/* 自動輪播 */
-if(slides.length > 0){
+/* 點擊圓點切換 */
+dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+        current = index;
+        showSlide(current);
+    });
+});
 
+
+/* 自動輪播 */
+if (slides.length > 0) {
+
+    // 先顯示第一張
     showSlide(current);
 
+    // 每 4 秒輪播
     setInterval(nextSlide, 4000);
 }
-// 綠色勾勾的 SVG 圖示
-const checkIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
 
-// 檢查選擇題
+
+/* ======================
+   答題功能
+====================== */
+
+// 綠色勾勾 SVG
+const checkIcon = `
+<svg width="20" height="20" viewBox="0 0 24 24"
+fill="none" stroke="currentColor"
+stroke-width="3" stroke-linecap="round"
+stroke-linejoin="round"
+style="vertical-align: middle;">
+<polyline points="20 6 9 17 4 12"></polyline>
+</svg>`;
+
+
+/* 檢查選擇題 */
 function checkRadio(name, correctAnswer, feedbackId) {
-    const selected = document.querySelector(`input[name="${name}"]:checked`);
+
+    const selected = document.querySelector(
+        `input[name="${name}"]:checked`
+    );
+
     const feedbackDiv = document.getElementById(feedbackId);
-    
+
     if (!selected) {
-        feedbackDiv.innerHTML = `<span class="wrong">請先選擇一個答案！</span>`;
+        feedbackDiv.innerHTML =
+            `<span class="wrong">請先選擇一個答案！</span>`;
         removeNavButtons(feedbackDiv);
         return;
     }
 
     if (selected.value === correctAnswer) {
-        feedbackDiv.innerHTML = `<span class="correct">${checkIcon} 正確</span>`;
+        feedbackDiv.innerHTML =
+            `<span class="correct">${checkIcon} 正確</span>`;
         removeNavButtons(feedbackDiv);
+
     } else {
-        feedbackDiv.innerHTML = `<span class="wrong">再想想看</span>`;
+        feedbackDiv.innerHTML =
+            `<span class="wrong">再想想看</span>`;
         addNavButtons(feedbackDiv);
     }
 }
 
-// 檢查填充題
+
+/* 檢查填充題 */
 function checkText(inputId, correctAnswers, feedbackId) {
-    const uans = document.getElementById(inputId).value.trim();
-    const feedbackDiv = document.getElementById(feedbackId);
+
+    const uans = document
+        .getElementById(inputId)
+        .value
+        .trim();
+
+    const feedbackDiv =
+        document.getElementById(feedbackId);
 
     if (uans === "") {
-        feedbackDiv.innerHTML = `<span class="wrong">請填寫答案！</span>`;
+        feedbackDiv.innerHTML =
+            `<span class="wrong">請填寫答案！</span>`;
         removeNavButtons(feedbackDiv);
         return;
     }
 
     if (correctAnswers.includes(uans)) {
-        feedbackDiv.innerHTML = `<span class="correct">${checkIcon} 正確</span>`;
+        feedbackDiv.innerHTML =
+            `<span class="correct">${checkIcon} 正確</span>`;
         removeNavButtons(feedbackDiv);
+
     } else {
-        feedbackDiv.innerHTML = `<span class="wrong">再想想看</span>`;
+        feedbackDiv.innerHTML =
+            `<span class="wrong">再想想看</span>`;
         addNavButtons(feedbackDiv);
     }
 }
 
-// 動態加入引導按鈕
+
+/* ======================
+   動態引導按鈕
+====================== */
+
+/* 加入按鈕 */
 function addNavButtons(targetDiv) {
-    if (targetDiv.querySelector('.nav-section')) return;
 
-    const navSection = document.createElement('div');
-    navSection.className = 'nav-section';
-    
-    const btnEco = document.createElement('a');
-    btnEco.className = 'btn-nav';
-    btnEco.href = 'EcologySurvey.html'; // 請更換成你實際的生態調查網頁檔名
-    btnEco.innerText = '前往【生態調查】找答案';
+    if (targetDiv.querySelector(".nav-section")) return;
 
-    const btnStatus = document.createElement('a');
-    btnStatus.className = 'btn-nav';
-    btnStatus.href = 'ChangesCurrentStatus.html'; // 請更換成你實際的現況與變遷網頁檔名
-    btnStatus.innerText = '前往【變遷與現狀】找答案';
+    const navSection =
+        document.createElement("div");
+
+    navSection.className = "nav-section";
+
+
+    // 生態調查
+    const btnEco =
+        document.createElement("a");
+
+    btnEco.className = "btn-nav";
+    btnEco.href = "EcologySurvey.html";
+    btnEco.innerText =
+        "前往【生態調查】找答案";
+
+
+    // 現況與變遷
+    const btnStatus =
+        document.createElement("a");
+
+    btnStatus.className = "btn-nav";
+    btnStatus.href = "ChangesCurrentStatus.html";
+    btnStatus.innerText =
+        "前往【變遷與現狀】找答案";
+
 
     navSection.appendChild(btnEco);
     navSection.appendChild(btnStatus);
+
     targetDiv.appendChild(navSection);
 }
 
-// 移除引導按鈕
+
+/* 移除按鈕 */
 function removeNavButtons(targetDiv) {
-    const existingNav = targetDiv.querySelector('.nav-section');
+
+    const existingNav =
+        targetDiv.querySelector(".nav-section");
+
     if (existingNav) {
         existingNav.remove();
     }
