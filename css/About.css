@@ -9,20 +9,26 @@
 
     display:flex;
     align-items:center;
+    justify-content:center;
     gap:40px;
 }
 
+
+/* 左側圖片 */
 .intro-image{
     flex:1;
 }
 
 .intro-image img{
     width:100%;
+    display:block;
     border-radius:18px;
     object-fit:cover;
-    box-shadow:0 4px 20px rgba(0,0,0,.15);
+    box-shadow:0 4px 20px rgba(0,0,0,0.15);
 }
 
+
+/* 右側文字 */
 .intro-text{
     flex:1;
 }
@@ -40,16 +46,28 @@
     margin-bottom:16px;
 }
 
-/* 手機版 */
-@media(max-width:768px){
+
+/* ======================
+   手機版
+====================== */
+@media (max-width:768px){
 
     .about-intro{
         flex-direction:column;
         padding:0 20px;
+        text-align:center;
     }
 
     .intro-text h2{
         font-size:1.6rem;
-        text-align:center;
+    }
+
+    .intro-text p{
+        font-size:1rem;
+    }
+
+    .intro-image img{
+        max-height:320px;
+        object-fit:cover;
     }
 }
