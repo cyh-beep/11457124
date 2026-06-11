@@ -8,26 +8,28 @@
     padding:0 30px;
 }
 
-.section-title{
+
+/* 標題區 */
+.landscape-title{
     text-align:center;
     margin-bottom:40px;
 }
 
-.section-title h2{
+.landscape-title h2{
     font-size:2.2rem;
     color:#2f5e3b;
     margin-bottom:20px;
 }
 
-.section-title p{
+.landscape-title p{
     max-width:900px;
-    margin:auto;
+    margin:0 auto;
     line-height:1.9;
     color:#444;
 }
 
 
-/* 圖片卡片 */
+/* 圖片卡片區 */
 .landscape-card-container{
     display:flex;
     gap:30px;
@@ -40,7 +42,7 @@
     border-radius:18px;
     overflow:hidden;
     box-shadow:0 4px 20px rgba(0,0,0,.12);
-    transition:.3s;
+    transition:transform .3s ease;
 }
 
 .landscape-card:hover{
@@ -51,25 +53,28 @@
     width:100%;
     height:300px;
     object-fit:cover;
+    display:block;
 }
 
-.card-content{
+
+/* 卡片文字 */
+.landscape-card-content{
     padding:24px;
 }
 
-.card-content h3{
+.landscape-card-content h3{
     color:#2f5e3b;
     margin-bottom:15px;
     font-size:1.5rem;
 }
 
-.card-content p{
+.landscape-card-content p{
     line-height:1.8;
     color:#555;
 }
 
 
-/* 水利說明 */
+/* 水利說明框 */
 .water-system-box{
     background:#eef6ee;
     border-left:6px solid #5f8d4e;
@@ -89,8 +94,10 @@
 }
 
 
-/* 手機版 */
-@media(max-width:768px){
+/* ======================
+   手機版
+====================== */
+@media (max-width:768px){
 
     .landscape-card-container{
         flex-direction:column;
@@ -100,7 +107,7 @@
         padding:0 20px;
     }
 
-    .section-title h2{
+    .landscape-title h2{
         font-size:1.8rem;
     }
 
