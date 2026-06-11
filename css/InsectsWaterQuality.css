@@ -1,0 +1,110 @@
+/* ======================
+   昆蟲與水質
+====================== */
+
+.insect-water-intro{
+    max-width:1200px;
+    margin:60px auto;
+    padding:0 30px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    font-size:2.2rem;
+    color:#2f5e3b;
+    margin-bottom:20px;
+}
+
+.section-title p{
+    max-width:900px;
+    margin:auto;
+    line-height:1.9;
+    color:#444;
+}
+
+
+/* 兩張圖片區塊 */
+.insect-card-container{
+    display:flex;
+    gap:30px;
+    margin-bottom:50px;
+}
+
+.insect-card{
+    flex:1;
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 4px 20px rgba(0,0,0,.12);
+    transition:.3s;
+}
+
+.insect-card:hover{
+    transform:translateY(-5px);
+}
+
+.insect-card img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:24px;
+}
+
+.card-content h3{
+    font-size:1.6rem;
+    color:#2f5e3b;
+    margin-bottom:15px;
+}
+
+.card-content p{
+    line-height:1.8;
+    color:#555;
+}
+
+
+/* 水質介紹 */
+.water-quality-box{
+    background:#f4f8f3;
+    border-left:6px solid #5f8d4e;
+    padding:30px;
+    border-radius:16px;
+}
+
+.water-quality-box h3{
+    color:#2f5e3b;
+    margin-bottom:18px;
+}
+
+.water-quality-box p{
+    line-height:1.9;
+    margin-bottom:12px;
+    color:#444;
+}
+
+
+/* 手機版 */
+@media(max-width:768px){
+
+    .insect-card-container{
+        flex-direction:column;
+    }
+
+    .section-title h2{
+        font-size:1.8rem;
+    }
+
+    .insect-card img{
+        height:240px;
+    }
+
+    .insect-water-intro{
+        padding:0 20px;
+    }
+}
