@@ -1,0 +1,55 @@
+/* ======================
+   富竹賞鳥埤塘簡介
+====================== */
+
+.about-intro{
+    max-width:1200px;
+    margin:60px auto;
+    padding:0 30px;
+
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+.intro-image{
+    flex:1;
+}
+
+.intro-image img{
+    width:100%;
+    border-radius:18px;
+    object-fit:cover;
+    box-shadow:0 4px 20px rgba(0,0,0,.15);
+}
+
+.intro-text{
+    flex:1;
+}
+
+.intro-text h2{
+    font-size:2rem;
+    color:#2f5e3b;
+    margin-bottom:20px;
+}
+
+.intro-text p{
+    line-height:1.9;
+    font-size:1.05rem;
+    color:#444;
+    margin-bottom:16px;
+}
+
+/* 手機版 */
+@media(max-width:768px){
+
+    .about-intro{
+        flex-direction:column;
+        padding:0 20px;
+    }
+
+    .intro-text h2{
+        font-size:1.6rem;
+        text-align:center;
+    }
+}
